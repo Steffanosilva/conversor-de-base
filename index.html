@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Base</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            min-height: 100vh;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-4 sm:p-6">
+
+    <div class="card w-full max-w-md p-6 sm:p-8 rounded-2xl shadow-lg text-white">
+        <h1 class="text-2xl sm:text-3xl font-bold mb-6 text-center tracking-wide">
+            Conversor de Base
+        </h1>
+
+        <div class="mb-6 relative">
+            <label id="inputLabel" for="numberInput" class="block text-sm font-medium mb-2 opacity-80">
+                Decimal
+            </label>
+            <div class="flex items-center gap-2">
+                <input type="text" id="numberInput" placeholder="Ex: 10"
+                       class="w-full p-3 rounded-xl bg-white bg-opacity-20 border border-transparent focus:border-blue-300 focus:ring focus:ring-blue-300 focus:ring-opacity-50 transition duration-300 text-white placeholder-gray-300 outline-none">
+                <button id="invertBtn"
+                        class="p-3 bg-white bg-opacity-20 rounded-xl hover:bg-opacity-30 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-800"
+                        title="Inverter base"
+                        aria-label="Inverter modo de conversão">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M11 16.5l-4.5-4.5 4.5-4.5v3H22v3H11v3zm13 3v-3h-11v3h4.5l-4.5 4.5 4.5-4.5z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="flex flex-col mb-6">
+            <button id="convertBtn"
+                    class="w-full p-3 rounded-xl font-semibold bg-blue-500 hover:bg-blue-600 transition duration-300 shadow-md transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-800">
+                Converter
+            </button>
+        </div>
+
+        <div id="resultBox" class="bg-white bg-opacity-10 p-4 rounded-xl text-center font-medium transition-all duration-300 min-h-[4rem] flex items-center justify-center">
+            <span id="resultText" class="text-lg text-white opacity-90"></span>
+        </div>
+    </div>
+
+    <script>
+        const numberInput = document.getElementById('numberInput');
+        const inputLabel = document.getElementById('inputLabel');
+        const convertBtn = document.getElementById('convertBtn');
+        const invertBtn = document.getElementById('invertBtn');
+        const resultText = document.getElementById('resultText');
+
+        let mode = 'decimal'; // 'decimal' ou 'binary'
+
+        // Funções para atualizar a interface com base no modo de conversão
+        function updateUI() {
+            if (mode === 'decimal') {
+                inputLabel.textContent = 'Decimal';
+                numberInput.placeholder = 'Ex: 10';
+                numberInput.type = 'number';
+            } else {
+                inputLabel.textContent = 'Binário';
+                numberInput.placeholder = 'Ex: 1010';
+                numberInput.type = 'text';
+            }
+            numberInput.value = '';
+            resultText.textContent = '';
+            resultText.style.color = '#fff';
+        }
+
+        // Exibe o resultado ou uma mensagem de erro
+        function showResult(message, isError = false) {
+            resultText.textContent = message;
+            if (isError) {
+                resultText.style.color = '#ff6b6b';
+            } else {
+                resultText.style.color = '#fff';
+            }
+        }
+
+        // Evento de clique do botão "Converter"
+        convertBtn.addEventListener('click', () => {
+            const inputValue = numberInput.value.trim();
+            if (inputValue === '') {
+                showResult('Por favor, insira um valor.', true);
+                return;
+            }
+
+            if (mode === 'decimal') {
+                if (isNaN(inputValue) || inputValue < 0 || inputValue.includes('.')) {
+                    showResult('Por favor, insira um número decimal inteiro válido.', true);
+                    return;
+                }
+                const binaryValue = parseInt(inputValue, 10).toString(2);
+                showResult(`Binário: ${binaryValue}`);
+            } else { // mode === 'binary'
+                if (!/^[01]+$/.test(inputValue)) {
+                    showResult('Entrada inválida. Use apenas 0s e 1s.', true);
+                    return;
+                }
+                const decimalValue = parseInt(inputValue, 2);
+                showResult(`Decimal: ${decimalValue}`);
+            }
+        });
+
+        // Evento de clique do botão "Inverter"
+        invertBtn.addEventListener('click', () => {
+            mode = mode === 'decimal' ? 'binary' : 'decimal';
+            updateUI();
+        });
+
+        // Evento para converter ao pressionar "Enter"
+        numberInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                convertBtn.click();
+            }
+        });
+
+        // Inicializa a interface com o modo padrão ao carregar
+        updateUI();
+    </script>
+</body>
+</html>
