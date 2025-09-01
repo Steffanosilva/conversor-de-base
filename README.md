@@ -1,57 +1,62 @@
-🔢 Conversor de Base
+# 🔢 CONVERSOR DE BASE  
 
-Aplicação web simples e intuitiva para converter números entre decimal e binário.
+Aplicação web **simples e intuitiva** para converter números entre **decimal** e **binário**.  
 
-✨ Funcionalidades
+---
 
-Conversão de Base: Converte números de decimal para binário e de binário para decimal.
+## ✨ Funcionalidades  
 
-Interface Unificada: Um único campo de entrada, deixando a experiência mais prática e limpa.
+### 🔄 Conversão de Base  
+- Converte números de **decimal → binário** e **binário → decimal**.  
 
-Botão "Inverter": Alterne facilmente entre os modos de conversão com um clique.
+### 🎛️ Interface Unificada  
+- Um único campo de entrada, deixando a experiência mais prática e limpa.  
 
-Conversão Rápida:
+### ⏩ Botão "Inverter"  
+- Alterne facilmente entre os modos de conversão com apenas um clique.  
 
-Clique no botão Converter
+### ⚡ Conversão Rápida  
+- Clique no botão **Converter**  
+- Ou pressione a tecla **Enter** no teclado  
 
-Ou pressione Enter no teclado
+### 🎓 Conteúdo Educacional  
+- Explicações sobre os cálculos de conversão.  
+- Vídeos do YouTube incorporados diretamente na página.  
 
-Conteúdo Educacional: Explicações sobre os cálculos de conversão e vídeos incorporados do YouTube.
+### 📱 Design Responsivo  
+- Adaptado para **desktop, tablet e mobile**.  
 
-Design Responsivo: Adaptado para desktop, tablet e mobile.
+---
 
-🖥️ Como Usar
+## 🖥️ Como Usar  
 
-Selecione o modo de conversão
+### 1️⃣ Selecionar o Modo de Conversão  
+- O app inicia no modo padrão **Decimal**.  
+- Clique no botão **Inverter** (ícone de setas) para alternar para **Binário**.  
 
-O app inicia no modo padrão Decimal.
+### 2️⃣ Inserir o Valor  
+- Para **Decimal**, use dígitos de `0 a 9`.  
+- Para **Binário**, insira apenas `0` e `1`.  
 
-Clique no botão Inverter (ícone de setas) para alternar para o modo Binário.
+### 3️⃣ Realizar a Conversão  
+- Pressione **Enter** ou clique no botão **Converter**.  
 
-Insira o valor
+### 4️⃣ Visualizar o Resultado  
+- O valor convertido aparecerá logo abaixo do campo de entrada.  
+- Caso o valor seja inválido, será exibida uma **mensagem de erro**.  
 
-Para Decimal, use dígitos de 0 a 9.
+---
 
-Para Binário, insira apenas 0 e 1.
+## 🚀 Tecnologias Utilizadas  
 
-Converta
+- **HTML5**  
+- **CSS3** (responsivo)  
+- **JavaScript (ES6+)**  
 
-Pressione Enter ou clique no botão Converter.
+---
 
-Veja o resultado
+## 📚 Demonstração  
 
-O valor convertido aparecerá logo abaixo do campo de entrada.
+📌 [Acesse o projeto aqui](https://conversor-de-base-ten.vercel.app/)  
 
-Se houver erro na entrada, uma mensagem de aviso será exibida.
-
-🚀 Tecnologias Utilizadas
-
-HTML5
-
-CSS3 (responsivo)
-
-JavaScript (ES6+)
-
-📚 Demonstração
-
-📌 https://conversor-de-base-ten.vercel.app/
+---
